@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Portal — LandLord</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body class="dashboard-layout">
+
+    <!-- Sidebar (Same as Owner, different links) -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-monogram" style="background: var(--color-secondary); color: var(--color-primary);">LL</div>
+            <span style="font-family: var(--font-display); font-size: 20px; font-weight: bold;">LandLord</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="sidebar-link active">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                Home
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="14" x="2" y="5" rx="2" />
+                    <line x1="2" x2="22" y1="10" y2="10" />
+                </svg>
+                Pay Rent
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+                Messages
+            </a>
+
+        </nav>
+        <div style="padding: 24px;">
+            <a href="index.html" class="sidebar-link" style="padding-left: 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" x2="9" y1="12" y2="12" />
+                </svg>
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <button id="sidebar-toggle"
+                    style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                </button>
+                <div class="header-welcome">Hello, <span style="font-weight: bold;">Eleanor Rigby</span></div>
+                <div
+                    style="font-size: 11px; color: var(--text-muted); font-weight: bold; text-transform: uppercase; margin-left: 12px;">
+                    March 30, 2026</div>
+            </div>
+            <div class="header-actions">
+                <div class="notification-bell">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                    </svg>
+                    <span class="bell-badge">1</span>
+                </div>
+                <button id="theme-toggle" class="theme-toggle"
+                    style="background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                </button>
+                <button id="rtl-toggle" class="rtl-toggle"
+                    style="background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </button>
+                <div class="profile-dropdown">
+                    <img src="https://i.pravatar.cc/150?u=eleanor" alt="Avatar" class="profile-avatar">
+                    <div class="profile-info">
+                        <span class="profile-name">Eleanor Rigby</span>
+                        <span class="profile-role">Tenant #402</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-container">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px; margin-bottom: 32px;">
+                <!-- Rent Card -->
+                <div class="kpi-card"
+                    style="flex-direction: row; align-items: center; justify-content: space-between; padding: 40px;">
+                    <div>
+                        <span class="kpi-label">Current Rent Due</span>
+                        <div class="kpi-value" style="font-size: 36px; margin: 8px 0;">$4,500.00</div>
+                        <p style="font-size: 13px; color: var(--text-muted);">Due on <span
+                                style="color: var(--color-danger); font-weight: bold;">April 1, 2026</span></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" style="padding: 18px 40px;">Pay Now</button>
+                    </div>
+                </div>
+                <!-- Lease Summary -->
+                <div class="kpi-card">
+                    <span class="kpi-label">Lease Summary</span>
+                    <div style="margin-top: 16px;">
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                            <span style="color: var(--text-muted);">Property:</span>
+                            <span style="font-weight: bold;">Skyline View #402</span>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                            <span style="color: var(--text-muted);">Lease End:</span>
+                            <span style="font-weight: bold;">Aug 31, 2026</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                            <span style="color: var(--text-muted);">Status:</span>
+                            <span class="badge badge-low">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pay Rent History -->
+            <div class="table-card">
+                <div class="table-header">
+                    <h3 class="table-title">Recent Payment History</h3>
+                    <button class="btn btn-outline" style="padding: 8px 16px; font-size: 12px;">View All
+                        Receipts</button>
+                </div>
+                <div style="overflow-x: auto;">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Reference ID</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 01, 2026</td>
+                                <td style="font-weight: bold;">$4,500.00</td>
+                                <td>Visa ending in 4421</td>
+                                <td>#PAY-99281</td>
+                                <td><span class="badge badge-low">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>Feb 01, 2026</td>
+                                <td style="font-weight: bold;">$4,500.00</td>
+                                <td>Visa ending in 4421</td>
+                                <td>#PAY-98212</td>
+                                <td><span class="badge badge-low">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 01, 2026</td>
+                                <td style="font-weight: bold;">$4,500.00</td>
+                                <td>Visa ending in 4421</td>
+                                <td>#PAY-97103</td>
+                                <td><span class="badge badge-low">Paid</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Contact Manager -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                <!-- Payment Form (UI only) -->
+                <div class="table-card">
+                    <h3 class="table-title" style="margin-bottom: 24px;">Quick Payment Method</h3>
+                    <form class="auth-form" style="padding: 0;">
+                        <div class="input-container">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="xxxx xxxx xxxx 4421" disabled class="form-control"
+                                style="padding: 14px 20px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-base); color: var(--text-primary); width: 100%;">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="input-container">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="12/28" disabled class="form-control">
+                            </div>
+                            <div class="input-container">
+                                <label>CVV</label>
+                                <input type="text" placeholder="***" disabled class="form-control">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline" style="width: 100%;">Update Payment
+                            Method</button>
+                    </form>
+                </div>
+                <!-- Message Thread -->
+                <div class="table-card" style="padding: 0;">
+                    <div class="chat-view" style="border-radius: 12px;">
+                        <div class="chat-view-header">
+                            <img src="https://i.pravatar.cc/100?u=alex" alt="Alex" class="profile-avatar"
+                                style="width: 32px; height: 32px;">
+                            <div>
+                                <div class="chat-name">Alex Thorne (Property Manager)</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Replies within 2 hours</div>
+                            </div>
+                        </div>
+                        <div class="chat-messages" style="height: 300px;">
+                            <div class="message-bubble message-received">
+                                Hi Eleanor, we've received your maintenance request regarding the hallway light.
+                            </div>
+                            <div class="message-bubble message-sent">
+                                Great, thank you. Let me know when the electrician will be by.
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" class="chat-input" placeholder="Ask Alex a question...">
+                            <button class="btn btn-gold"
+                                style="border-radius: 50%; width: 40px; height: 40px; padding: 0;">➜</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Sidebar Toggle for Mobile
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        sidebarToggle?.addEventListener('click', () => {
+            sidebar?.classList.toggle('open');
+        });
+    </script>
+</body>
+
+</html>

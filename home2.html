@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandLord — Premium Real Estate Management</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .prop-card { overflow: hidden; height: 100%; display: flex; flex-direction: column; text-align: left; align-items: flex-start; padding: 0; }
+        .prop-image { width: 100%; height: 220px; object-fit: cover; }
+        .prop-badge { position: absolute; top: 12px; right: 12px; background: var(--color-secondary); color: var(--color-primary); padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        .prop-content { padding: 24px; width: 100%; position: relative; }
+        .prop-title { font-size: 18px; margin-bottom: 8px; color: var(--text-primary); }
+        .prop-address { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
+        .prop-meta { display: flex; gap: 16px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 16px; margin-bottom: 20px; }
+        .prop-price { font-size: 20px; font-weight: bold; color: var(--color-primary); }
+        [data-theme="dark"] .prop-price { color: var(--color-secondary); }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Same as Home 1) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link active">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme"></button>
+                <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
+                <a href="owner-dashboard.html" class="btn btn-primary" style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
+                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant Dashboard</a>
+                <button id="menu-toggle" class="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="overlay" class="overlay"></div>
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </div>
+            <button id="close-drawer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link active">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="properties.html" class="nav-link">Properties</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <a href="register.html" class="btn btn-outline">Signup</a>
+            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
+            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero (Luxury Interior) -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container hero-content">
+                <h1 class="hero-title">Where Every Property<br>Becomes an Investment</h1>
+                <p class="hero-description">Elevating the standard of residential management through data-driven strategies and personalized care.</p>
+                <div class="hero-btns">
+                    <a href="properties.html" class="btn btn-gold">Browse Listings</a>
+                    <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Get a Valuation</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured Properties -->
+        <section>
+            <div class="container">
+                <span class="section-label">Exclusive Portfolio</span>
+                <h2 class="section-title">Featured Residences</h2>
+                <p class="section-subtitle">A curated selection of our finest managed properties available for lease.</p>
+                
+                <div class="card-grid">
+                    <div class="card prop-card">
+                        <div style="position: relative; width: 100%;">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" class="prop-image" alt="Property">
+                            <span class="prop-badge">Premium</span>
+                        </div>
+                        <div class="prop-content">
+                            <h3 class="prop-title">Skyline View Penthouse</h3>
+                            <p class="prop-address">123 Manhattan Plaza, New York</p>
+                            <div class="prop-meta">
+                                <span>3 Bed</span> <span>2 Bath</span> <span>1,800 sq ft</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                <span class="prop-price">$4,500/mo</span>
+                                <a href="properties.html" class="btn btn-primary" style="padding: 10px 20px;">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card prop-card">
+                        <div style="position: relative; width: 100%;">
+                            <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80" class="prop-image" alt="Property">
+                            <span class="prop-badge">Modern</span>
+                        </div>
+                        <div class="prop-content">
+                            <h3 class="prop-title">Garden State Villa</h3>
+                            <p class="prop-address">45 Oakwood Lane, Austin TX</p>
+                            <div class="prop-meta">
+                                <span>2 Bed</span> <span>1 Bath</span> <span>1,200 sq ft</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                <span class="prop-price">$2,200/mo</span>
+                                <a href="properties.html" class="btn btn-primary" style="padding: 10px 20px;">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card prop-card">
+                        <div style="position: relative; width: 100%;">
+                            <img src="https://images.unsplash.com/photo-1448630305456-91e816ff3ad0?auto=format&fit=crop&w=800&q=80" class="prop-image" alt="Property">
+                            <span class="prop-badge">Minimalist</span>
+                        </div>
+                        <div class="prop-content">
+                            <h3 class="prop-title">The Industrial Loft</h3>
+                            <p class="prop-address">22 Factory St, Chicago IL</p>
+                            <div class="prop-meta">
+                                <span>1 Bed</span> <span>1 Bath</span> <span>950 sq ft</span>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                                <span class="prop-price">$1,800/mo</span>
+                                <a href="properties.html" class="btn btn-primary" style="padding: 10px 20px;">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Why LandLord -->
+        <section style="background-color: var(--bg-surface);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+                    <div class="about-content">
+                        <span class="section-label" style="text-align: left; margin-left: 0;">Why Choose Us</span>
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Excellence and Trust</h2>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                            <div>
+                                <h4 style="margin-bottom: 12px;">Premium Staging</h4>
+                                <p style="font-size: 14px; color: var(--text-muted);">We present your property in the best possible light with professional staging services.</p>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 12px;">Global Marketing</h4>
+                                <p style="font-size: 14px; color: var(--text-muted);">Reach international tenants through our extensive network and digital strategy.</p>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 12px;">Asset Protection</h4>
+                                <p style="font-size: 14px; color: var(--text-muted);">Regular inspections and proactive maintenance to preserve your property's value.</p>
+                            </div>
+                            <div>
+                                <h4 style="margin-bottom: 12px;">Tax Assistance</h4>
+                                <p style="font-size: 14px; color: var(--text-muted);">Comprehensive financial reporting designed to make tax season effortless for owners.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1541462608141-ad4371eeccad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Illustration" style="border-radius: var(--radius-lg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Owner vs Tenant -->
+        <section>
+            <div class="container">
+                <span class="section-label">A Complete Ecosystem</span>
+                <h2 class="section-title">Value for Everyone</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 48px;">
+                    <div class="card" style="align-items: flex-start; text-align: left;">
+                        <div class="card-icon">💼</div>
+                        <h3 class="card-title">For Property Owners</h3>
+                        <p class="card-text">Direct deposits, detailed reporting, and peace of mind with 24/7 property oversight.</p>
+                        <ul class="card-list" style="text-align: left;">
+                            <li>• Zero-Management Experience</li>
+                            <li>• Maximized Rental ROI</li>
+                            <li>• Vetted Quality Tenants</li>
+                        </ul>
+                        <a href="login.html" class="btn btn-gold">Owner Portal Login</a>
+                    </div>
+                    <div class="card" style="align-items: flex-start; text-align: left;">
+                        <div class="card-icon">🗝️</div>
+                        <h3 class="card-title">For Renters & Tenants</h3>
+                        <p class="card-text">Luxury living with high-speed response times and a seamless digital interface for all needs.</p>
+                        <ul class="card-list" style="text-align: left;">
+                            <li>• Online Rent Payments</li>
+                            <li>• Instant Maintenance Support</li>
+                            <li>• Premium Property Portfolio</li>
+                        </ul>
+                        <a href="login.html" class="btn btn-primary">Tenant Portal Login</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Stats / Social Proof -->
+        <section style="background-color: var(--color-primary); color: white;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center;">
+                    <div>
+                        <h4 style="font-size: var(--text-6xl); color: var(--color-secondary); margin-bottom: 8px;">15K+</h4>
+                        <p style="font-size: var(--text-sm); font-weight: bold; text-transform: uppercase;">Tenants Housed</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--text-6xl); color: var(--color-secondary); margin-bottom: 8px;">22</h4>
+                        <p style="font-size: var(--text-sm); font-weight: bold; text-transform: uppercase;">Cities Active</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--text-6xl); color: var(--color-secondary); margin-bottom: 8px;">1.2B</h4>
+                        <p style="font-size: var(--text-sm); font-weight: bold; text-transform: uppercase;">Assets Managed</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--text-6xl); color: var(--color-secondary); margin-bottom: 8px;">99%</h4>
+                        <p style="font-size: var(--text-sm); font-weight: bold; text-transform: uppercase;">Owner Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: CTA Banner -->
+        <section style="background-color: var(--bg-surface);">
+            <div class="container text-center">
+                <span class="section-label">Get in Touch</span>
+                <h2 class="section-title">Start Your Journey Today</h2>
+                <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+                    <p style="color: var(--text-muted);">Whether you're looking to list your portfolio or find your next home, we're here to help.</p>
+                    <div style="display: flex; gap: 12px;">
+                        <input type="email" placeholder="Enter your email address" style="flex: 1; padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-base); color: var(--text-primary);">
+                        <button class="btn btn-gold">Request a Callback</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as Home 1) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo footer-logo">
+                        <div class="logo-monogram footer-logo-monogram">LL</div>
+                        <span>LandLord</span>
+                    </div>
+                    <p class="footer-tagline">Professional Property Management You Can Trust. Excellence in every square foot.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon fb" title="Facebook">f</a>
+                        <a href="#" class="social-icon ig" title="Instagram">ig</a>
+                        <a href="#" class="social-icon ln" title="LinkedIn">in</a>
+                        <a href="#" class="social-icon tw" title="Twitter">𝕏</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="home2.html" class="footer-nav-link">Home 2</a>
+                        <a href="services.html" class="footer-nav-link">Services</a>
+                        <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Owners</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Owner Portal</a>
+                        <a href="services.html" class="footer-nav-link">Pricing Plans</a>
+                        <a href="services.html" class="footer-nav-link">Management Services</a>
+                        <a href="register.html" class="footer-nav-link">List Property</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Tenants</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Pay Rent</a>
+                        <a href="properties.html" class="footer-nav-link">Filter Properties</a>
+                        <a href="login.html" class="footer-nav-link">Maintenance Request</a>
+                        <a href="register.html" class="footer-nav-link">Apply Now</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-gold" style="padding: 10px;">➜</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 LandLord. All rights reserved.</p>
+                <div style="display: flex; gap: 24px;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

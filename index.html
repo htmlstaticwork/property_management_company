@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandLord — Professional Property Management</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
+                <a href="owner-dashboard.html" class="btn btn-primary" style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
+                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant Dashboard</a>
+                <button id="menu-toggle" class="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="overlay" class="overlay"></div>
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </div>
+            <button id="close-drawer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="properties.html" class="nav-link">Properties</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <a href="register.html" class="btn btn-outline">Signup</a>
+            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
+            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container hero-content">
+                <h1 class="hero-title">Your Properties.<br>Professionally Managed.</h1>
+                <p class="hero-description">The ultimate property management solution for owners and tenants. Experience stress-free residential property management with LandLord.</p>
+                <div class="hero-btns">
+                    <a href="properties.html" class="btn btn-gold">Find a Property</a>
+                    <a href="login.html" class="btn btn-outline" style="color: white; border-color: white;">Owner Login</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Services -->
+        <section id="services">
+            <div class="container">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Comprehensive Management</h2>
+                <p class="section-subtitle">We handle every aspect of property management so you can focus on building your portfolio.</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">🏠</div>
+                        <h3 class="card-title">Property Marketing</h3>
+                        <p class="card-text">We use premium listings and creative marketing to attract high-quality tenants quickly.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3 class="card-title">Tenant Screening</h3>
+                        <p class="card-text">Rigorous background checks, credit evaluations, and employment verification for peace of mind.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💰</div>
+                        <h3 class="card-title">Rent Collection</h3>
+                        <p class="card-text">Automated monthly rent collection with transparent reporting and direct bank deposits.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛠️</div>
+                        <h3 class="card-title">Maintenance</h3>
+                        <p class="card-text">24/7 emergency response and proactive property maintenance to protect your investment.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3 class="card-title">Financial Reporting</h3>
+                        <p class="card-text">Detailed monthly income and expense statements accessible through your owner portal.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⚖️</div>
+                        <h3 class="card-title">Legal Compliance</h3>
+                        <h3 class="card-text">We stay updated on local laws to ensure your property remains fully compliant at all times.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: About -->
+        <section id="about" style="background-color: var(--bg-surface);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1073&q=80" alt="LandLord Office" style="border-radius: var(--radius-lg); box-shadow: var(--shadow);">
+                    </div>
+                    <div class="about-content">
+                        <span class="section-label" style="text-align: left; margin-left: 0;">Our Story</span>
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Excellence in Every Square Foot</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 32px;">Founded on the principles of trust and transparency, LandLord has grown into a leading residential property management company. Our mission is to maximize owner value while providing tenants with a premium living experience.</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                            <div>
+                                <h4 style="font-size: var(--text-3xl); color: var(--color-secondary);">500+</h4>
+                                <p style="font-size: var(--text-sm); font-weight: bold; color: var(--text-primary); text-transform: uppercase;">Properties Managed</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size: var(--text-3xl); color: var(--color-secondary);">98%</h4>
+                                <p style="font-size: var(--text-sm); font-weight: bold; color: var(--text-primary); text-transform: uppercase;">Occupancy Rate</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size: var(--text-3xl); color: var(--color-secondary);">12+</h4>
+                                <p style="font-size: var(--text-sm); font-weight: bold; color: var(--text-primary); text-transform: uppercase;">Years Experience</p>
+                            </div>
+                            <div>
+                                <h4 style="font-size: var(--text-3xl); color: var(--color-secondary);">24/7</h4>
+                                <p style="font-size: var(--text-sm); font-weight: bold; color: var(--text-primary); text-transform: uppercase;">Support Active</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: How It Works -->
+        <section id="how-it-works">
+            <div class="container">
+                <span class="section-label">The Process</span>
+                <h2 class="section-title">Getting Started is Simple</h2>
+                <p class="section-subtitle">We've streamlined the management process to three simple steps.</p>
+
+                <div class="card-grid three-col">
+                    <div class="card">
+                        <div style="font-size: 48px; font-weight: bold; color: var(--color-secondary); opacity: 0.2; margin-bottom: 16px;">01</div>
+                        <h3 class="card-title">List Your Property</h3>
+                        <p class="card-text">Connect with our team to list your property and define your management goals.</p>
+                    </div>
+                    <div class="card">
+                        <div style="font-size: 48px; font-weight: bold; color: var(--color-secondary); opacity: 0.2; margin-bottom: 16px;">02</div>
+                        <h3 class="card-title">We Find Tenants</h3>
+                        <p class="card-text">We handle the marketing, viewings, and rigorous screening to find the perfect match.</p>
+                    </div>
+                    <div class="card">
+                        <div style="font-size: 48px; font-weight: bold; color: var(--color-secondary); opacity: 0.2; margin-bottom: 16px;">03</div>
+                        <h3 class="card-title">You Collect Income</h3>
+                        <p class="card-text">Sit back while we manage daily operations and deposit your rent payments directly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Testimonials -->
+        <section id="testimonials" style="background-color: var(--bg-surface);">
+            <div class="container">
+                <span class="section-label">Reviews</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Read how LandLord has transformed the property management experience for owners and tenants.</p>
+
+                <div class="card-grid three-col">
+                    <div class="card">
+                        <div style="margin-bottom: 20px; color: var(--color-secondary);">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text" style="font-style: italic; margin-bottom: 30px;">"LandLord has been managing my four-unit apartment building for two years now. My vacancy rate is zero and my stress levels have never been lower."</p>
+                        <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+                            <img src="https://i.pravatar.cc/50?u=1" alt="James Wilson" style="border-radius: 50%;">
+                            <div>
+                                <h4 style="font-size: 14px;">James Wilson</h4>
+                                <p style="font-size: 12px; color: var(--text-muted);">Property Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="margin-bottom: 20px; color: var(--color-secondary);">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text" style="font-style: italic; margin-bottom: 30px;">"As a tenant, I really appreciate the portal. Paying rent is effortless and maintenance requests are handled almost instantly. Highly recommend!"</p>
+                        <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+                            <img src="https://i.pravatar.cc/50?u=2" alt="Sarah Chen" style="border-radius: 50%;">
+                            <div>
+                                <h4 style="font-size: 14px;">Sarah Chen</h4>
+                                <p style="font-size: 12px; color: var(--text-muted);">Tenant</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="margin-bottom: 20px; color: var(--color-secondary);">⭐⭐⭐⭐⭐</div>
+                        <p class="card-text" style="font-style: italic; margin-bottom: 30px;">"Transferred my portfolio to LandLord last year and it was the best decision. Their financial reporting is crystal clear and their legal knowledge is top-tier."</p>
+                        <div style="display: flex; align-items: center; gap: 12px; text-align: left;">
+                            <img src="https://i.pravatar.cc/50?u=3" alt="Robert Miller" style="border-radius: 50%;">
+                            <div>
+                                <h4 style="font-size: 14px;">Robert Miller</h4>
+                                <p style="font-size: 12px; color: var(--text-muted);">Real Estate Investor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: CTA Banner -->
+        <section id="cta" style="background: linear-gradient(rgba(27, 42, 74, 0.9), rgba(27, 42, 74, 0.9)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80') center/cover; color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: var(--text-4xl); margin-bottom: 24px;">Ready to Hand Over the Keys?</h2>
+                <p style="margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Join hundreds of satisfied owners and tenants who trust LandLord with their residential property needs.</p>
+                <a href="contact.html" class="btn btn-gold">Get a Free Property Assessment</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo footer-logo">
+                        <div class="logo-monogram footer-logo-monogram">LL</div>
+                        <span>LandLord</span>
+                    </div>
+                    <p class="footer-tagline">Professional Property Management You Can Trust. Excellence in every square foot.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon fb" title="Facebook">f</a>
+                        <a href="#" class="social-icon ig" title="Instagram">ig</a>
+                        <a href="#" class="social-icon ln" title="LinkedIn">in</a>
+                        <a href="#" class="social-icon tw" title="Twitter">𝕏</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="home2.html" class="footer-nav-link">Home 2</a>
+                        <a href="services.html" class="footer-nav-link">Services</a>
+                        <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Owners</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Owner Portal</a>
+                        <a href="services.html" class="footer-nav-link">Pricing Plans</a>
+                        <a href="services.html" class="footer-nav-link">Management Services</a>
+                        <a href="register.html" class="footer-nav-link">List Property</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Tenants</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Pay Rent</a>
+                        <a href="properties.html" class="footer-nav-link">Filter Properties</a>
+                        <a href="login.html" class="footer-nav-link">Maintenance Request</a>
+                        <a href="register.html" class="footer-nav-link">Apply Now</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p style="font-size: 13px; color: #adb5bd;">Get property market updates and management tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-gold" style="padding: 10px;">➜</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 LandLord. All rights reserved.</p>
+                <div style="display: flex; gap: 24px;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

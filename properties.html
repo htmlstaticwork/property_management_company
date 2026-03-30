@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties — LandLord Property Management</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .filter-bar { background: var(--bg-surface); padding: 32px; border-radius: var(--radius-md); box-shadow: var(--shadow); margin-top: -60px; position: relative; z-index: 10; display: flex; gap: 20px; flex-wrap: wrap; box-shadow: 0 10px 40px rgba(0,0,0,0.12); }
+        .filter-group { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+        .filter-group label { font-size: 11px; font-weight: bold; text-transform: uppercase; color: var(--text-muted); }
+        .filter-group select, .filter-group input { padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--bg-base); color: var(--text-primary); font-family: inherit; }
+        .filter-btn { align-self: flex-end; padding: 14px 40px; }
+
+        .property-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0; overflow: hidden; border-radius: var(--radius-md); background: var(--bg-surface); box-shadow: var(--shadow); transition: 0.3s; position: relative; border: 1px solid var(--border-color); }
+        .property-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(27, 42, 74, 0.15); }
+        .property-image { width: 100%; height: 240px; object-fit: cover; }
+        .property-badge { position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        .badge-available { background: var(--color-success); color: white; }
+        .badge-leased { background: var(--color-danger); color: white; }
+        .badge-soon { background: var(--color-warning); color: white; }
+        .property-content { padding: 32px 24px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .property-title { font-size: 20px; margin-bottom: 8px; color: var(--text-primary); font-family: var(--font-display); }
+        .property-address { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+        .property-specs { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 16px 0; margin-bottom: 24px; }
+        .spec-item { display: flex; flex-direction: column; gap: 4px; }
+        .spec-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: bold; }
+        .spec-value { font-size: 14px; font-weight: bold; color: var(--color-primary); }
+        [data-theme="dark"] .spec-value { color: var(--color-secondary); }
+        .property-rent { font-size: 24px; font-weight: bold; color: var(--color-primary); margin-bottom: 24px; }
+        [data-theme="dark"] .property-rent { color: var(--color-secondary); }
+
+        @media (max-width: 768px) {
+            .filter-bar { margin-top: -30px; padding: 24px; flex-direction: column; }
+            .filter-group { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Same as Home 1) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="properties.html" class="nav-link active">Properties</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme"></button>
+                <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
+                <a href="owner-dashboard.html" class="btn btn-primary" style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
+                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant Dashboard</a>
+                <button id="menu-toggle" class="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="overlay" class="overlay"></div>
+    <div id="drawer" class="drawer">
+        <!-- Content same as Home 1 -->
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </div>
+            <button id="close-drawer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="properties.html" class="nav-link active">Properties</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <a href="register.html" class="btn btn-outline">Signup</a>
+            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
+            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section: Hero -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1460317442991-0ec209397118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); min-height: 400px; height: 50vh;">
+            <div class="container hero-content">
+                <h1 class="hero-title" style="margin-bottom: 8px;">Explore Our Properties</h1>
+                <p class="hero-description" style="max-width: 500px;">Find your perfect home from our collection of premium residential listings.</p>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label>Location</label>
+                    <input type="text" placeholder="Enter City, State, or Zip">
+                </div>
+                <div class="filter-group">
+                    <label>Property Type</label>
+                    <select>
+                        <option>All Types</option>
+                        <option>Apartment</option>
+                        <option>House</option>
+                        <option>Studio</option>
+                        <option>Penthouse</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Bedrooms</label>
+                    <select>
+                        <option>Any</option>
+                        <option>1+ Beds</option>
+                        <option>2+ Beds</option>
+                        <option>3+ Beds</option>
+                        <option>4+ Beds</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Max Rent</label>
+                    <select>
+                        <option>No Max</option>
+                        <option>$1,000</option>
+                        <option>$2,000</option>
+                        <option>$3,000</option>
+                        <option>$5,000+</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary filter-btn">Search</button>
+            </div>
+        </div>
+
+        <!-- Property Grid -->
+        <section>
+            <div class="container">
+                <div class="card-grid">
+                    <!-- Property 1 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-available">Available Now</span>
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">The Grand Penthouse</h3>
+                            <p class="property-address">777 Celestial Way, New York, NY</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Penthouse</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">3</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">2,200 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$5,200 / mo</div>
+                            <button class="btn btn-gold" style="width: 100%;">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Property 2 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-leased">Leased</span>
+                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80" alt="Loft" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">Modern Soho Loft</h3>
+                            <p class="property-address">222 Spring St, New York, NY</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Studio</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">1</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">950 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$3,100 / mo</div>
+                            <button class="btn btn-outline" style="width: 100%; cursor: not-allowed; opacity: 0.5;">Available June</button>
+                        </div>
+                    </div>
+                    <!-- Property 3 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-available">Available Now</span>
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartment" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">Riverside Terrace</h3>
+                            <p class="property-address">12 Blue Water Dr, Seattle, WA</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Apartment</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">2</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">1,400 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$2,800 / mo</div>
+                            <button class="btn btn-gold" style="width: 100%;">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Property 4 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-soon">Coming Soon</span>
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80" alt="House" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">Oakwood Estates</h3>
+                            <p class="property-address">456 Pinecrest Circle, Austin, TX</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">House</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">4</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">3,100 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$4,500 / mo</div>
+                            <button class="btn btn-gold" style="width: 100%;">Waitlist Open</button>
+                        </div>
+                    </div>
+                    <!-- Property 5 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-available">Available Now</span>
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Apartment" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">The Industrial Suite</h3>
+                            <p class="property-address">88 Ironworks Lane, Portland, OR</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Studio</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">1</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">800 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$1,950 / mo</div>
+                            <button class="btn btn-gold" style="width: 100%;">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Property 6 -->
+                    <div class="property-card">
+                        <span class="property-badge badge-available">Available Now</span>
+                        <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=800&q=80" alt="Modern House" class="property-image">
+                        <div class="property-content">
+                            <h3 class="property-title">Coastal Retreat</h3>
+                            <p class="property-address">101 Ocean Blvd, Malibu, CA</p>
+                            <div class="property-specs">
+                                <div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">House</span></div>
+                                <div class="spec-item"><span class="spec-label">Beds</span><span class="spec-value">3</span></div>
+                                <div class="spec-item"><span class="spec-label">Area</span><span class="spec-value">2,500 sqft</span></div>
+                            </div>
+                            <div class="property-rent">$7,800 / mo</div>
+                            <button class="btn btn-gold" style="width: 100%;">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" style="background: var(--color-primary); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: var(--text-4xl); margin-bottom: 24px;">Can't Find What You're Looking For?</h2>
+                <p style="margin-bottom: 40px; opacity: 0.9;">Join our waitlist or contact us to find unlisted premium opportunities.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-gold">Contact an Agent</a>
+                    <a href="register.html" class="btn btn-outline" style="color: white; border-color: white;">Join Waitlist</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Same as Home 1) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo footer-logo">
+                        <div class="logo-monogram footer-logo-monogram">LL</div>
+                        <span>LandLord</span>
+                    </div>
+                    <p class="footer-tagline">Professional Property Management You Can Trust.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon fb">f</a>
+                        <a href="#" class="social-icon ig">ig</a>
+                        <a href="#" class="social-icon ln">in</a>
+                        <a href="#" class="social-icon tw">𝕏</a>
+                    </div>
+                </div>
+                <!-- columns -->
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="home2.html" class="footer-nav-link">Home 2</a>
+                        <a href="services.html" class="footer-nav-link">Services</a>
+                        <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Property Types</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-nav-link">Apartments</a>
+                        <a href="#" class="footer-nav-link">Penthouses</a>
+                        <a href="#" class="footer-nav-link">Studios</a>
+                        <a href="#" class="footer-nav-link">Houses</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Support</h4>
+                    <div class="footer-links">
+                        <a href="contact.html" class="footer-nav-link">Help Center</a>
+                        <a href="login.html" class="footer-nav-link">Tenant Support</a>
+                        <a href="login.html" class="footer-nav-link">Owner Support</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-gold" style="padding: 10px;">➜</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 LandLord. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

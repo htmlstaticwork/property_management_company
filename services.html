@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services — LandLord Property Management</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .timeline { position: relative; max-width: 1000px; margin: 48px auto 0; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: var(--color-secondary); opacity: 0.3; transform: translateX(-50%); }
+        .timeline-item { width: 45%; margin-bottom: 40px; position: relative; }
+        .timeline-item:nth-child(even) { margin-left: auto; text-align: left; }
+        .timeline-item:nth-child(odd) { text-align: right; }
+        .timeline-item::after { content: ''; position: absolute; top: 0; width: 16px; height: 16px; background: var(--color-secondary); border-radius: 50%; z-index: 10; }
+        .timeline-item:nth-child(even)::after { left: -33px; transform: translateX(-50%); }
+        .timeline-item:nth-child(odd)::after { right: -33px; transform: translateX(50%); }
+        .timeline-title { font-size: 18px; color: var(--color-primary); margin-bottom: 8px; }
+        [data-theme="dark"] .timeline-title { color: var(--color-secondary); }
+        .timeline-text { font-size: 14px; color: var(--text-muted); }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; text-align: left !important; padding-left: 50px; }
+            .timeline-item::after { left: 20px !important; transform: translateX(-50%) !important; right: auto !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (Same as Home 1) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme"></button>
+                <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
+                <a href="owner-dashboard.html" class="btn btn-primary" style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
+                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant Dashboard</a>
+                <button id="menu-toggle" class="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="overlay" class="overlay"></div>
+    <div id="drawer" class="drawer">
+        <!-- Content same as Home 1 -->
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </div>
+            <button id="close-drawer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link active">Services</a>
+            <a href="properties.html" class="nav-link">Properties</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <a href="register.html" class="btn btn-outline">Signup</a>
+            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
+            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            <div class="container hero-content">
+                <h1 class="hero-title">Expert Property<br>Management Services</h1>
+                <p class="hero-description">From owner acquisition to tenant transition, we provide end-to-end management solutions for residential properties of all scales.</p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn btn-gold">Free Assessment</a>
+                    <a href="#services" class="btn btn-outline" style="color: white; border-color: white;">Our Process</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro -->
+        <section style="background-color: var(--bg-surface);">
+            <div class="container text-center">
+                <span class="section-label">Tailored Solutions</span>
+                <h2 class="section-title">The Full-Service Model</h2>
+                <p class="section-subtitle">We believe in a hands-off approach for owners. Our full-service management model covers every detail, ensuring your investment grows while we handle the work.</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section id="services">
+            <div class="container">
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">📣</div>
+                        <h3 class="card-title">Aggressive Marketing</h3>
+                        <p class="card-text">We syndicate your listing across 50+ major real estate portals, utilizing professional photography and 3D tours to minimize vacancy days.</p>
+                        <ul class="card-list">
+                            <li>Professional Photography</li>
+                            <li>Multi-platform Syndication</li>
+                            <li>3D Virtual Tours</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">👨‍⚖️</div>
+                        <h3 class="card-title">Tenant Placement</h3>
+                        <p class="card-text">Our exhaustive screening process includes national background checks, credit scoring, and landlord reference verification.</p>
+                        <ul class="card-list">
+                            <li>Credit Score Analysis</li>
+                            <li>Income Verification</li>
+                            <li>National Criminal Check</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔧</div>
+                        <h3 class="card-title">Routine Maintenance</h3>
+                        <p class="card-text">We conduct bi-annual property inspections and manage all vendor relations for repairs, ensuring your asset is always preserved.</p>
+                        <ul class="card-list">
+                            <li>24/7 Repair Hotline</li>
+                            <li>Pre-Vetted Vendors</li>
+                            <li>Preventative Checks</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📒</div>
+                        <h3 class="card-title">Accounting & Taxes</h3>
+                        <p class="card-text">Access your personal owner portal to see real-time income/expense reports. We handle all 1099 reporting and year-end statements.</p>
+                        <ul class="card-list">
+                            <li>Live Cashflow Tracking</li>
+                            <li>Online Tax Documents</li>
+                            <li>Monthly P&L Statements</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📜</div>
+                        <h3 class="card-title">Legal Advocacy</h3>
+                        <p class="card-text">From lease drafting to eviction management, our legal team ensures your portfolio stays compliant with local housing ordinances.</p>
+                        <ul class="card-list">
+                            <li>Lease Agreements</li>
+                            <li>L/T Dispute Support</li>
+                            <li>Compliance Audits</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3 class="card-title">ROI Maximization</h3>
+                        <p class="card-text">We provide annual market rent analysis to ensure your property is always priced correctly, maximizing your rental yield.</p>
+                        <ul class="card-list">
+                            <li>Annual Rent Reviews</li>
+                            <li>Asset Improvement Tips</li>
+                            <li>Investment Advisory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Timeline -->
+        <section style="background-color: var(--bg-surface);">
+            <div class="container">
+                <span class="section-label">Timeline</span>
+                <h2 class="section-title">Client Onboarding Process</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Initial Consultation</h4>
+                        <p class="timeline-text">We meet to discuss your property goals and perform a preliminary market assessment.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Management Agreement</h4>
+                        <p class="timeline-text">Formalizing our partnership and gathering all necessary property documentation.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Property Prep & Listing</h4>
+                        <p class="timeline-text">Professional cleaning, photography, and launching your property on the market.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Tenant Selection</h4>
+                        <p class="timeline-text">Vetting applicants and securing a high-quality tenant through our screening process.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="timeline-title">Active Management</h4>
+                        <p class="timeline-text">Daily oversight, rent collection, and maintenance management begins.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta" style="background: linear-gradient(rgba(27, 42, 74, 0.9), rgba(27, 42, 74, 0.9)), url('https://images.unsplash.com/photo-1554232456-8727aae0cfa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80') center/cover; color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: var(--text-4xl); margin-bottom: 24px;">Transform Your Ownership Experience</h2>
+                <p style="margin-bottom: 40px; opacity: 0.9;">Ready to see what LandLord can do for your portfolio?</p>
+                <a href="contact.html" class="btn btn-gold">Contact Our Team</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo footer-logo">
+                        <div class="logo-monogram footer-logo-monogram">LL</div>
+                        <span>LandLord</span>
+                    </div>
+                    <p class="footer-tagline">Professional Property Management You Can Trust.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon fb">f</a>
+                        <a href="#" class="social-icon ig">ig</a>
+                        <a href="#" class="social-icon ln">in</a>
+                        <a href="#" class="social-icon tw">𝕏</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="home2.html" class="footer-nav-link">Home 2</a>
+                        <a href="services.html" class="footer-nav-link">Services</a>
+                        <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-nav-link">Privacy Policy</a>
+                        <a href="#" class="footer-nav-link">Terms of Service</a>
+                        <a href="#" class="footer-nav-link">Cookie Policy</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="footer-links">
+                        <span class="footer-nav-link">info@landlord.com</span>
+                        <span class="footer-nav-link">+1 (555) 000-0000</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-gold" style="padding: 10px;">➜</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 LandLord. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -79,10 +79,14 @@
 }
 
 @media (max-width: 768px) {
-    .kpi-grid { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .dashboard-container { padding: 20px; }
     .message-layout { grid-template-columns: 1fr; height: auto; min-height: 800px; }
     .chat-list { height: 400px; border-bottom: 1px solid var(--border-color); }
+}
+
+@media (max-width: 480px) {
+    .kpi-grid { grid-template-columns: 1fr !important; }
 }
 
 [dir="rtl"] .sidebar { left: auto; right: 0; }

@@ -27,28 +27,16 @@
             </button>
         </div>
 
-        <!-- User Type -->
-        <div class="user-type-selector">
-            <button class="type-btn active" data-type="owner">Owner</button>
-            <button class="type-btn" data-type="tenant">Tenant</button>
-        </div>
-
         <!-- Form content -->
         <div class="form-header">
-            <h2 id="register-title">Owner Registration</h2>
+            <h2 id="register-title">Create Your Account</h2>
             <p>Join the future of residential management today.</p>
         </div>
 
         <form class="auth-form" id="register-form">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="input-container">
-                    <label>First Name</label>
-                    <input type="text" placeholder="John" required class="input-with-icon" style="padding: 14px 20px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-base); color: var(--text-primary);">
-                </div>
-                <div class="input-container">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Doe" required class="input-with-icon" style="padding: 14px 20px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-base); color: var(--text-primary);">
-                </div>
+            <div class="input-container">
+                <label>Full Name</label>
+                <input type="text" placeholder="John Doe" required class="input-with-icon" style="width: 100%; padding: 14px 20px; border: 1px solid var(--border-color); border-radius: 8px; background: var(--bg-base); color: var(--text-primary); margin-bottom: 20px;">
             </div>
             <div class="input-container">
                 <label>Email Address</label>
@@ -66,20 +54,11 @@
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="input-container">
-                    <label>Password</label>
-                    <div class="input-with-icon">
-                        <input type="password" id="pw-field" placeholder="••••••••" required>
-                        <span class="input-icon" id="toggle-pw">👁️</span>
-                    </div>
-                </div>
-                <div class="input-container">
-                    <label>Confirm Password</label>
-                    <div class="input-with-icon">
-                        <input type="password" id="confirm-pw-field" placeholder="••••••••" required>
-                        <span class="input-icon" id="toggle-confirm-pw">👁️</span>
-                    </div>
+            <div class="input-container">
+                <label>Password</label>
+                <div class="input-with-icon">
+                    <input type="password" id="pw-field" placeholder="••••••••" required>
+                    <span class="input-icon" id="toggle-pw">👁️</span>
                 </div>
             </div>
 
@@ -88,14 +67,17 @@
                 <span>I accept the <a href="#" class="auth-link">Terms & Conditions</a> and <a href="#" class="auth-link">Privacy Policy</a></span>
             </label>
 
-            <button type="submit" class="btn auth-btn" id="reg-btn">Create Owner Account</button>
+            <button type="submit" class="btn auth-btn" id="reg-btn">Create Account</button>
         </form>
 
         <div class="social-login">
             <div class="social-divider">or signup with</div>
-            <div class="social-btns">
+            <div class="social-btns" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <button class="social-btn google-btn">
                    <span style="font-weight: bold; font-size: 18px;">G</span> Google
+                </button>
+                <button class="social-btn apple-btn" style="background: #000; color: white; border: none; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 8px; cursor: pointer;">
+                   <span style="font-weight: bold; font-size: 18px;"></span> Apple
                 </button>
             </div>
         </div>
@@ -108,40 +90,14 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script>
-        document.querySelectorAll('.type-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const type = btn.getAttribute('data-type');
-                document.getElementById('register-title').innerText = type === 'owner' ? 'Owner Registration' : 'Tenant Registration';
-                document.getElementById('reg-btn').innerText = type === 'owner' ? 'Create Owner Account' : 'Create Tenant Account';
-                
-                const label = document.getElementById('dynamic-label');
-                const input = document.getElementById('dynamic-input');
-                if (type === 'owner') {
-                    label.innerText = 'Number of Properties';
-                    input.type = 'number';
-                    input.placeholder = 'e.g. 5';
-                } else {
-                    label.innerText = 'Desired Move-in Date';
-                    input.type = 'date';
-                    input.placeholder = '';
-                }
-            });
-        });
-
         document.getElementById('toggle-pw').addEventListener('click', () => {
             const field = document.getElementById('pw-field');
-            field.type = field.type === 'password' ? 'text' : 'password';
-        });
-        document.getElementById('toggle-confirm-pw').addEventListener('click', () => {
-            const field = document.getElementById('confirm-pw-field');
             field.type = field.type === 'password' ? 'text' : 'password';
         });
 
         document.getElementById('register-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Registration Successful! Your account has been created. Use the dashboard links in the navbar to access your portal.');
+            alert('Registration Successful! Your account has been created.');
             window.location.href = 'index.html';
         });
     </script>

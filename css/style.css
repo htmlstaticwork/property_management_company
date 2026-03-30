@@ -750,6 +750,10 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .managed-grid {
     grid-template-columns: repeat(3, 1fr) !important;
   }

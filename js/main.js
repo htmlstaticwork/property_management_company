@@ -86,4 +86,29 @@ document.addEventListener('DOMContentLoaded', () => {
             hero.classList.add('hero-animate');
         }, 100);
     }
+
+    // Back to Top Button
+    if (!document.body.classList.contains('auth-page') && !document.body.classList.contains('dashboard-layout')) {
+        const backToTop = document.createElement('button');
+        backToTop.id = 'back-to-top';
+        backToTop.className = 'back-to-top';
+        backToTop.setAttribute('aria-label', 'Back to Top');
+        backToTop.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+        document.body.appendChild(backToTop);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });

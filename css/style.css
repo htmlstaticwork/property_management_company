@@ -260,18 +260,21 @@ img {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
 }
 
-[data-theme="dark"] .logo {
-  color: var(--color-secondary);
+.logo span {
+  color: #C9A84C !important;
+}
+
+[data-theme="dark"] .logo span {
+  color: #C9A84C !important;
 }
 
 .logo-monogram {
   width: 40px;
   height: 40px;
-  background: var(--color-primary);
-  color: white;
+  background: #C9A84C !important;
+  color: #1B2A4A !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -281,8 +284,8 @@ img {
 }
 
 [data-theme="dark"] .logo-monogram {
-  background: var(--color-secondary);
-  color: var(--color-primary);
+  background: #C9A84C !important;
+  color: #1B2A4A !important;
 }
 
 .nav-links {

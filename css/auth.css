@@ -84,3 +84,19 @@
         order: 0;
     }
 }
+
+/* Always gold logo — all modes */
+.logo span {
+  color: #C9A84C !important;
+}
+.logo-monogram {
+  background: #C9A84C !important;
+  color: #1B2A4A !important;
+}
+[data-theme="dark"] .logo span {
+  color: #C9A84C !important;
+}
+[data-theme="dark"] .logo-monogram {
+  background: #C9A84C !important;
+  color: #1B2A4A !important;
+}

@@ -8,6 +8,20 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
+        @media (max-width: 480px) {
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+
         .timeline {
             position: relative;
             max-width: 1000px;
@@ -111,6 +125,7 @@
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
                 <li><a href="services.html" class="nav-link active">Services</a></li>
                 <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -161,6 +176,7 @@
             <a href="home2.html" class="nav-link">Home 2</a>
             <a href="services.html" class="nav-link active">Services</a>
             <a href="properties.html" class="nav-link">Properties</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <hr style="border: 0; border-top: 1px solid var(--border-color);">
             <a href="register.html" class="btn btn-outline">Signup</a>
@@ -172,12 +188,13 @@
     <main>
         <!-- Section 1: Hero -->
         <section class="hero"
-            style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');text-align: center;justify-content: center;">
             <div class="container hero-content">
                 <h1 class="hero-title">Expert Property<br>Management Services</h1>
-                <p class="hero-description">From owner acquisition to tenant transition, we provide end-to-end
+                <p class="hero-description" style="margin: 0 auto 40px;">From owner acquisition to tenant transition, we
+                    provide end-to-end
                     management solutions for residential properties of all scales.</p>
-                <div class="hero-btns">
+                <div class="hero-btns" style="justify-content: center;">
                     <a href="contact.html" class="btn btn-gold">Free Assessment</a>
                     <a href="#services" class="btn btn-outline" style="color: white; border-color: white;">Our
                         Process</a>
@@ -212,7 +229,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">📣</div>
+
                             <h3 class="card-title">Aggressive Marketing</h3>
                             <p class="card-text">We syndicate your listing across 50+ major real estate portals,
                                 utilizing professional photography and 3D tours to minimize vacancy days.</p>
@@ -236,7 +253,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">👨‍⚖️</div>
+
                             <h3 class="card-title">Tenant Placement</h3>
                             <p class="card-text">Our exhaustive screening process includes national background checks,
                                 credit scoring, and landlord reference verification.</p>
@@ -260,7 +277,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">🔧</div>
+
                             <h3 class="card-title">Routine Maintenance</h3>
                             <p class="card-text">We conduct bi-annual property inspections and manage all vendor
                                 relations for repairs, ensuring your asset is always preserved.</p>
@@ -284,7 +301,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">📒</div>
+
                             <h3 class="card-title">Accounting & Taxes</h3>
                             <p class="card-text">Access your personal owner portal to see real-time income/expense
                                 reports. We handle all 1099 reporting and year-end statements.</p>
@@ -308,7 +325,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">📜</div>
+
                             <h3 class="card-title">Legal Advocacy</h3>
                             <p class="card-text">From lease drafting to eviction management, our legal team ensures your
                                 portfolio stays compliant with local housing ordinances.</p>
@@ -332,7 +349,7 @@
                         </div>
                         <div
                             style="padding: 24px 20px 28px; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%;">
-                            <div class="card-icon">📈</div>
+
                             <h3 class="card-title">ROI Maximization</h3>
                             <p class="card-text">We provide annual market rent analysis to ensure your property is
                                 always priced correctly, maximizing your rental yield.</p>
@@ -419,6 +436,7 @@
                         <a href="home2.html" class="footer-nav-link">Home 2</a>
                         <a href="services.html" class="footer-nav-link">Services</a>
                         <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing</a>
                         <a href="contact.html" class="footer-nav-link">Contact</a>
                     </div>
                 </div>

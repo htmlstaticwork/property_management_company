@@ -208,7 +208,7 @@ img {
   align-items: center;
 }
 
-/* Light mode - Transparent initially */
+/* Light mode - Transparent initially on mobile */
 [data-theme="light"] .navbar {
   background: transparent;
 }
@@ -220,10 +220,19 @@ img {
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Dark mode - ALWAYS solid at 1440px web view only */
+/* Light mode - ALWAYS solid at 1440px web view */
+@media (min-width: 1025px) {
+  [data-theme="light"] .navbar {
+    background: var(--bg-nav);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
+  }
+}
+
+/* Dark mode - ALWAYS solid at 1440px web view */
 @media (min-width: 1025px) {
   [data-theme="dark"] .navbar {
     background: #0f0f0f;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -231,7 +240,7 @@ img {
 [data-theme="dark"] .navbar.scrolled {
   background: rgba(15, 15, 15, 0.97);
   backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
 }
 
 .nav-container {
@@ -664,11 +673,15 @@ footer {
     text-align: left;
     gap: 32px;
   }
+
   .about-grid .about-content {
-    order: -1; /* text on left */
+    order: -1;
+    /* text on left */
   }
+
   .about-grid .about-image {
-    order: 1; /* image on right */
+    order: 1;
+    /* image on right */
   }
 }
 
@@ -688,7 +701,8 @@ footer {
 
 @media (max-width: 768px) {
   .ecosystem-grid {
-    grid-template-columns: 1fr 1fr; /* Keep 2-col in tab */
+    grid-template-columns: 1fr 1fr;
+    /* Keep 2-col in tab */
   }
 }
 
@@ -701,7 +715,8 @@ footer {
 
 @media (max-width: 768px) {
   .why-inner-grid {
-    grid-template-columns: 1fr 1fr; /* Stay 2-col in tab */
+    grid-template-columns: 1fr 1fr;
+    /* Stay 2-col in tab */
   }
 }
 
@@ -743,7 +758,7 @@ footer {
 /* Responsive Grid */
 @media (min-width: 1440px) {
   .card-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .card-grid.three-col {
@@ -850,11 +865,13 @@ footer {
   }
 
   .about-grid .about-content {
-    order: 1 !important; /* text below image */
+    order: 1 !important;
+    /* text below image */
   }
 
   .about-grid .about-image {
-    order: -1 !important; /* image on top */
+    order: -1 !important;
+    /* image on top */
   }
 
   .ecosystem-grid {

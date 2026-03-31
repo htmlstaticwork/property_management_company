@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — LandLord Property Management</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Pricing Page Specific Styles */
+        .pricing-hero {
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+            padding: 140px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .pricing-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .billing-toggle-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .toggle-label {
+            font-size: var(--text-sm);
+            font-weight: var(--font-weight-medium);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .toggle-label.active {
+            color: white;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 1255, 255, 0.1);
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 3px;
+            background-color: var(--color-secondary);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .save-badge {
+            background: rgba(201, 168, 76, 0.2);
+            color: var(--color-secondary);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-weight-bold);
+            border: 1px solid var(--color-secondary);
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .pricing-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            transform: scale(1.04);
+            box-shadow: 0 20px 40px rgba(27, 42, 74, 0.2);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.04) translateY(-6px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-weight-bold);
+            text-transform: uppercase;
+        }
+
+        .tier-name {
+            font-size: var(--text-xl);
+            margin-bottom: 8px;
+            font-family: var(--font-display);
+        }
+
+        .tier-price {
+            font-size: var(--text-5xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .price-curr {
+            font-size: var(--text-2xl);
+            vertical-align: top;
+            margin-top: 10px;
+        }
+
+        .price-period {
+            font-size: var(--text-sm);
+            font-weight: var(--font-weight-normal);
+            opacity: 0.7;
+        }
+
+        .tier-features {
+            margin: 32px 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+            flex: 1;
+        }
+
+        .tier-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: var(--text-sm);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .featured .tier-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .tier-features li i {
+            color: var(--color-secondary);
+        }
+
+        .tier-features li.locked {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 100px 0;
+            background: var(--bg-surface);
+        }
+
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin-top: 48px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 800px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            background: var(--bg-base);
+        }
+
+        .comparison-table th.highlight {
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .comparison-table td.highlight-col {
+            background: rgba(27, 42, 74, 0.02);
+            text-align: center;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        /* FAQ Accordion */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .faq-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: fit-content;
+        }
+
+        .faq-question {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: var(--font-weight-semibold);
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-base);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-muted);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 24px 24px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            color: var(--color-secondary);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Dark Mode adjustments */
+        [data-theme="dark"] .pricing-card {
+            background: #161616;
+            border-color: #2d2d2d;
+        }
+
+        [data-theme="dark"] .comparison-table th {
+            background: #1f1f1f;
+        }
+
+        [data-theme="dark"] .comparison-table td {
+            border-bottom-color: #2d2d2d;
+        }
+
+        [data-theme="dark"] .faq-item {
+            background: #161616;
+            border-color: #2d2d2d;
+        }
+
+        @media (max-width: 1024px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-6px);
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .pricing-grid .pricing-card:nth-child(3) {
+                grid-column: auto !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="home2.html" class="nav-link">Home 2</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="pricing.html" class="nav-link active">Pricing</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                </button>
+                <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </button>
+                <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
+                <a href="owner-dashboard.html" class="btn btn-primary"
+                    style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
+                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant
+                    Dashboard</a>
+                <button id="menu-toggle" class="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="overlay" class="overlay"></div>
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="logo">
+                <div class="logo-monogram">LL</div>
+                <span>LandLord</span>
+            </div>
+            <button id="close-drawer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" x2="6" y1="6" y2="18" />
+                    <line x1="6" x2="18" y1="6" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="home2.html" class="nav-link">Home 2</a>
+            <a href="services.html" class="nav-link">Services</a>
+            <a href="properties.html" class="nav-link">Properties</a>
+            <a href="pricing.html" class="nav-link active">Pricing</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <a href="register.html" class="btn btn-outline">Signup</a>
+            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
+            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="pricing-hero">
+            <div class="container">
+                <span class="section-label" style="color: var(--color-secondary);">Pricing Plans</span>
+                <h1 class="hero-title" style="opacity: 1; transform: none; margin-bottom: 16px;">Management Plans Built
+                    for Every Owner</h1>
+                <p style="opacity: 0.9; max-width: 600px; margin: 0 auto;">Transparent pricing with no hidden fees.
+                    Choose the plan that fits your portfolio.</p>
+
+                <div class="billing-toggle-wrapper">
+                    <span class="toggle-label active" id="monthly-label">Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricing-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="toggle-label" id="annual-label">Annual</span>
+                    <span class="save-badge">Save 20%</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Pricing Cards -->
+        <section style="padding-top: 0;">
+            <div class="container">
+                <div class="card-grid three-col pricing-grid">
+                    <!-- Starter -->
+                    <div class="pricing-card">
+                        <div class="tier-name">Starter</div>
+                        <div class="tier-price">
+                            <span class="price-curr">$</span>
+                            <span class="price-val" data-monthly="49" data-annual="39">49</span>
+                            <span class="price-period">/mo</span>
+                        </div>
+                        <p class="card-text">Perfect for single property owners just getting started.</p>
+                        <ul class="tier-features">
+                            <li><i>✓</i> Up to 2 Properties</li>
+                            <li><i>✓</i> Online Rent Collection</li>
+                            <li><i>✓</i> Basic Accounting</li>
+                            <li class="locked"><i>✗</i> Priority Maintenance</li>
+                            <li class="locked"><i>✗</i> Legal Support</li>
+                            <li class="locked"><i>✗</i> Dedicated Manager</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline">Get Started</a>
+                    </div>
+
+                    <!-- Professional -->
+                    <div class="pricing-card featured">
+                        <span class="popular-badge">Most Popular</span>
+                        <div class="tier-name">Professional</div>
+                        <div class="tier-price">
+                            <span class="price-curr">$</span>
+                            <span class="price-val" data-monthly="99" data-annual="79">99</span>
+                            <span class="price-period">/mo</span>
+                        </div>
+                        <p class="card-text" style="color: rgba(255,255,255,0.8);">Our most popular plan for active real
+                            estate investors.</p>
+                        <ul class="tier-features">
+                            <li><i style="color: var(--color-secondary);">✓</i> Up to 10 Properties</li>
+                            <li><i style="color: var(--color-secondary);">✓</i> Full Financial Reporting</li>
+                            <li><i style="color: var(--color-secondary);">✓</i> 24/7 Priority Support</li>
+                            <li><i style="color: var(--color-secondary);">✓</i> Tenant Screening</li>
+                            <li><i style="color: var(--color-secondary);">✓</i> Automated Late Fees</li>
+                            <li class="locked" style="opacity: 0.3;"><i>✗</i> Dedicated Manager</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-gold">Choose Professional</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="pricing-card">
+                        <div class="tier-name">Enterprise</div>
+                        <div class="tier-price">
+                            <span style="font-size: var(--text-3xl);">Custom</span>
+                        </div>
+                        <p class="card-text">Tailored solutions for large portfolios and corporate owners.</p>
+                        <ul class="tier-features">
+                            <li><i>✓</i> Unlimited Properties</li>
+                            <li><i>✓</i> Dedicated Property Manager</li>
+                            <li><i>✓</i> White-Glove Service</li>
+                            <li><i>✓</i> Full Legal & Compliance</li>
+                            <li><i>✓</i> Custom Web Portal</li>
+                            <li><i>✓</i> API Integration</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3:
+        <section class="comparison-section">
+            <div class="container">
+                <span class="section-label">Deep Dive</span>
+                <h2 class="section-title">Compare Features</h2>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Starter</th>
+                                <th class="highlight">Professional</th>
+                                <th>Enterprise</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Max Properties</td>
+                                <td>2 Units</td>
+                                <td class="highlight-col">10 Units</td>
+                                <td>Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Rent Collection</td>
+                                <td>✅</td>
+                                <td class="highlight-col">✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Tenant Portal</td>
+                                <td>✅</td>
+                                <td class="highlight-col">✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Maintenance Tracking</td>
+                                <td>Basic</td>
+                                <td class="highlight-col">Advanced</td>
+                                <td>Full Integration</td>
+                            </tr>
+                            <tr>
+                                <td>Financial Reporting</td>
+                                <td>Basic</td>
+                                <td class="highlight-col">Full Suite</td>
+                                <td>Custom Analytics</td>
+                            </tr>
+                            <tr>
+                                <td>Tenant Screening</td>
+                                <td>$25/check</td>
+                                <td class="highlight-col">Included</td>
+                                <td>Included</td>
+                            </tr>
+                            <tr>
+                                <td>Legal Support</td>
+                                <td>✗</td>
+                                <td class="highlight-col">Partial</td>
+                                <td>Full Legal Team</td>
+                            </tr>
+                            <tr>
+                                <td>Dedicated Manager</td>
+                                <td>✗</td>
+                                <td class="highlight-col">✗</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>White-labeling</td>
+                                <td>✗</td>
+                                <td class="highlight-col">✗</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>API Access</td>
+                                <td>✗</td>
+                                <td class="highlight-col">✗</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section> Comparison Table -->
+
+        <!-- Section 4: FAQ Accordion -->
+        <section>
+            <div class="container">
+                <span class="section-label">Questions</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Are there any setup fees?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No, we do not charge any setup or onboarding fees. You can create your account and start
+                                listing properties immediately after choosing a plan.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I switch plans later?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can upgrade or downgrade your plan at any time from your dashboard. If you
+                                upgrade, the price will be prorated for the remainder of your billing cycle.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do payments work?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards. Payments are processed securely via our payment
+                                partner. You'll receive an automated invoice every billing cycle.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Do you provide legal lease templates?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, Professional and Enterprise plans include a library of state-specific,
+                                attorney-vetted lease agreements and legal notices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: CTA Banner -->
+        <section id="cta"
+            style="background: linear-gradient(rgba(27, 42, 74, 0.95), rgba(27, 42, 74, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80') center/cover; color: white; text-align: center; padding: 100px 20px;">
+            <div class="container">
+                <h2 style="font-size: var(--text-4xl); margin-bottom: 24px;">Ready to Hand Over the Keys?</h2>
+                <p style="margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Join hundreds of satisfied owners and tenants who trust LandLord with their residential property
+                    needs.</p>
+                <a href="contact.html" class="btn btn-gold">Get a Free Property Assessment</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo footer-logo">
+                        <div class="logo-monogram footer-logo-monogram">LL</div>
+                        <span>LandLord</span>
+                    </div>
+                    <p class="footer-tagline">Professional Property Management You Can Trust. Excellence in every square
+                        foot.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon fb" title="Facebook">f</a>
+                        <a href="#" class="social-icon ig" title="Instagram">ig</a>
+                        <a href="#" class="social-icon ln" title="LinkedIn">in</a>
+                        <a href="#" class="social-icon tw" title="Twitter">𝕏</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-nav-link">Home</a>
+                        <a href="home2.html" class="footer-nav-link">Home 2</a>
+                        <a href="services.html" class="footer-nav-link">Services</a>
+                        <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing</a>
+                        <a href="contact.html" class="footer-nav-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Owners</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Owner Portal</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing Plans</a>
+                        <a href="services.html" class="footer-nav-link">Management Services</a>
+                        <a href="register.html" class="footer-nav-link">List Property</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">For Tenants</h4>
+                    <div class="footer-links">
+                        <a href="login.html" class="footer-nav-link">Pay Rent</a>
+                        <a href="properties.html" class="footer-nav-link">Filter Properties</a>
+                        <a href="login.html" class="footer-nav-link">Maintenance Request</a>
+                        <a href="register.html" class="footer-nav-link">Apply Now</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p style="font-size: 13px; color: #adb5bd;">Get property market updates and management tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-gold" style="padding: 10px;">➜</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 LandLord. All rights reserved.</p>
+                <div style="display: flex; gap: 24px;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Pricing Toggle Logic
+        const toggle = document.getElementById('pricing-toggle');
+        const priceVals = document.querySelectorAll('.price-val');
+        const monthlyLabel = document.getElementById('monthly-label');
+        const annualLabel = document.getElementById('annual-label');
+
+        toggle?.addEventListener('change', () => {
+            const isAnnual = toggle.checked;
+
+            if (isAnnual) {
+                monthlyLabel.classList.remove('active');
+                annualLabel.classList.add('active');
+            } else {
+                monthlyLabel.classList.add('active');
+                annualLabel.classList.remove('active');
+            }
+
+            priceVals.forEach(val => {
+                const price = isAnnual ? val.getAttribute('data-annual') : val.getAttribute('data-monthly');
+                val.textContent = price;
+            });
+        });
+
+        // FAQ Accordion Logic
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all others
+                faqItems.forEach(other => other.classList.remove('active'));
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

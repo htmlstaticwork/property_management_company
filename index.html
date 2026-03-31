@@ -7,6 +7,21 @@
     <title>LandLord — Professional Property Management</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        @media (max-width: 480px) {
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +38,7 @@
                 <li><a href="home2.html" class="nav-link">Home 2</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -77,6 +93,7 @@
             <a href="home2.html" class="nav-link">Home 2</a>
             <a href="services.html" class="nav-link">Services</a>
             <a href="properties.html" class="nav-link">Properties</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <hr style="border: 0; border-top: 1px solid var(--border-color);">
             <a href="register.html" class="btn btn-outline">Signup</a>
@@ -88,12 +105,12 @@
     <main>
         <!-- Section 1: Hero -->
         <section class="hero"
-            style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); text-align: center; justify-content: center;">
             <div class="container hero-content">
                 <h1 class="hero-title">Your Properties.<br>Professionally Managed.</h1>
-                <p class="hero-description">The ultimate property management solution for owners and tenants. Experience
+                <p class="hero-description" style="margin: 0 auto 40px;">The ultimate property management solution for owners and tenants. Experience
                     stress-free residential property management with LandLord.</p>
-                <div class="hero-btns">
+                <div class="hero-btns" style="justify-content: center;">
                     <a href="properties.html" class="btn btn-gold">Find a Property</a>
                     <a href="login.html" class="btn btn-outline" style="color: white; border-color: white;">Owner
                         Login</a>
@@ -116,7 +133,7 @@
                                 alt="Property Marketing" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">🏠</div>
+                            <!-- <div class="card-icon">🏠</div> -->
                             <h3 class="card-title">Property Marketing</h3>
                             <p class="card-text">We use premium listings and creative marketing to attract high-quality
                                 tenants quickly.</p>
@@ -129,7 +146,7 @@
                                 alt="Tenant Screening" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">🔍</div>
+                            <!-- <div class="card-icon">🔍</div> -->
                             <h3 class="card-title">Tenant Screening</h3>
                             <p class="card-text">Rigorous background checks, credit evaluations, and employment
                                 verification for peace of mind.</p>
@@ -142,7 +159,7 @@
                                 alt="Rent Collection" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">💰</div>
+                            <!-- <div class="card-icon">💰</div> -->
                             <h3 class="card-title">Rent Collection</h3>
                             <p class="card-text">Automated monthly rent collection with transparent reporting and direct
                                 bank deposits.</p>
@@ -155,7 +172,7 @@
                                 alt="Maintenance" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">🛠️</div>
+                            <!-- <div class="card-icon">🛠️</div> -->
                             <h3 class="card-title">Maintenance</h3>
                             <p class="card-text">24/7 emergency response and proactive property maintenance to protect
                                 your investment.</p>
@@ -168,7 +185,7 @@
                                 alt="Financial Reporting" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">📊</div>
+                            <!-- <div class="card-icon">📊</div> -->
                             <h3 class="card-title">Financial Reporting</h3>
                             <p class="card-text">Detailed monthly income and expense statements accessible through your
                                 owner portal.</p>
@@ -181,7 +198,7 @@
                                 alt="Legal Compliance" class="card-img" />
                         </div>
                         <div class="card-body">
-                            <div class="card-icon">⚖️</div>
+                            <!-- <div class="card-icon">⚖️</div> -->
                             <h3 class="card-title">Legal Compliance</h3>
                             <p class="card-text">We stay updated on local laws to ensure your property remains fully
                                 compliant at all times.</p>
@@ -351,9 +368,6 @@
 
     <!-- Footer -->
 
-    </section>
-
-    <div style="height: 60px; background: var(--bg-base);"></div>
 
 
     <footer>
@@ -381,6 +395,7 @@
                         <a href="home2.html" class="footer-nav-link">Home 2</a>
                         <a href="services.html" class="footer-nav-link">Services</a>
                         <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing</a>
                         <a href="contact.html" class="footer-nav-link">Contact</a>
                     </div>
                 </div>
@@ -389,7 +404,7 @@
                     <h4 class="footer-title">For Owners</h4>
                     <div class="footer-links">
                         <a href="login.html" class="footer-nav-link">Owner Portal</a>
-                        <a href="services.html" class="footer-nav-link">Pricing Plans</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing Plans</a>
                         <a href="services.html" class="footer-nav-link">Management Services</a>
                         <a href="register.html" class="footer-nav-link">List Property</a>
                     </div>

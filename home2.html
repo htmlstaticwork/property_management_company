@@ -8,6 +8,35 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
+        @media (max-width: 480px) {
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+
+            /* CTA Mobile fixes */
+            .cta-banner {
+                padding: 60px 24px !important;
+            }
+
+            .cta-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-form input {
+                width: 100%;
+                flex: none !important;
+            }
+        }
+
         .prop-card {
             overflow: hidden;
             height: 100%;
@@ -91,6 +120,7 @@
                 <li><a href="home2.html" class="nav-link active">Home 2</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="properties.html" class="nav-link">Properties</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
 
@@ -140,6 +170,7 @@
             <a href="home2.html" class="nav-link active">Home 2</a>
             <a href="services.html" class="nav-link">Services</a>
             <a href="properties.html" class="nav-link">Properties</a>
+            <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <hr style="border: 0; border-top: 1px solid var(--border-color);">
             <a href="register.html" class="btn btn-outline">Signup</a>
@@ -151,12 +182,13 @@
     <main>
         <!-- Section 1: Hero (Luxury Interior) -->
         <section class="hero"
-            style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+            style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); text-align: center; justify-content: center;">
             <div class="container hero-content">
                 <h1 class="hero-title">Where Every Property<br>Becomes an Investment</h1>
-                <p class="hero-description">Elevating the standard of residential management through data-driven
+                <p class="hero-description" style="margin: 0 auto 40px;">Elevating the standard of residential
+                    management through data-driven
                     strategies and personalized care.</p>
-                <div class="hero-btns">
+                <div class="hero-btns" style="justify-content: center;">
                     <a href="properties.html" class="btn btn-gold">Browse Listings</a>
                     <a href="contact.html" class="btn btn-outline" style="color: white; border-color: white;">Get a
                         Valuation</a>
@@ -294,7 +326,7 @@
                         </div>
                         <div
                             style="padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%;">
-                            <div class="card-icon">💼</div>
+                            <!-- <div class="card-icon">💼</div> -->
                             <h3 class="card-title" style="text-align: center;">For Property Owners</h3>
                             <p class="card-text" style="text-align: center;">Direct deposits, detailed reporting, and
                                 peace of mind with 24/7 property oversight.</p>
@@ -318,10 +350,10 @@
                         </div>
                         <div
                             style="padding: 28px 24px 32px; display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%;">
-                            <div class="card-icon">🗝️</div>
+                            <!-- <div class="card-icon">🗝️</div> -->
                             <h3 class="card-title" style="text-align: center;">For Renters & Tenants</h3>
-                            <p class="card-text" style="text-align: center;">Luxury living with high-speed response
-                                times and a seamless digital interface for all needs.</p>
+                            <p class="card-text" style="text-align: center;">Luxury with high-speed response
+                                times and a seamless digital interface for all.</p>
                             <ul class="card-list" style="text-align: center; list-style: none; padding: 0;">
                                 <li>• Online Rent Payments</li>
                                 <li>• Instant Maintenance Support</li>
@@ -367,14 +399,14 @@
         </section>
 
         <!-- Section 6: CTA Banner -->
-        <section style="background-color: var(--bg-surface);">
+        <section class="cta-banner" style="background-color: var(--bg-surface);">
             <div class="container text-center">
                 <span class="section-label">Get in Touch</span>
                 <h2 class="section-title">Start Your Journey Today</h2>
                 <div style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
                     <p style="color: var(--text-muted);">Whether you're looking to list your portfolio or find your next
                         home, we're here to help.</p>
-                    <div style="display: flex; gap: 12px;">
+                    <div class="cta-form" style="display: flex; gap: 12px;">
                         <input type="email" placeholder="Enter your email address"
                             style="flex: 1; padding: 14px 20px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--bg-base); color: var(--text-primary);">
                         <button class="btn btn-gold">Request a Callback</button>
@@ -410,6 +442,7 @@
                         <a href="home2.html" class="footer-nav-link">Home 2</a>
                         <a href="services.html" class="footer-nav-link">Services</a>
                         <a href="properties.html" class="footer-nav-link">Properties</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing</a>
                         <a href="contact.html" class="footer-nav-link">Contact</a>
                     </div>
                 </div>
@@ -418,7 +451,7 @@
                     <h4 class="footer-title">For Owners</h4>
                     <div class="footer-links">
                         <a href="login.html" class="footer-nav-link">Owner Portal</a>
-                        <a href="services.html" class="footer-nav-link">Pricing Plans</a>
+                        <a href="pricing.html" class="footer-nav-link">Pricing Plans</a>
                         <a href="services.html" class="footer-nav-link">Management Services</a>
                         <a href="register.html" class="footer-nav-link">List Property</a>
                     </div>

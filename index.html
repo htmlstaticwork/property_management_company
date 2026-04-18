@@ -67,10 +67,31 @@
                     </svg>
                 </button>
                 <a href="register.html" class="btn btn-outline" style="border: none; padding: 10px 20px;">Signup</a>
-                <a href="owner-dashboard.html" class="btn btn-primary"
-                    style="padding: 10px 15px; font-size: 11px;">Owner Dashboard</a>
-                <a href="tenant-dashboard.html" class="btn btn-gold" style="padding: 10px 15px; font-size: 11px;">Tenant
-                    Dashboard</a>
+                <div class="nav-dropdown">
+                    <button class="btn btn-primary" style="padding: 10px 20px; gap: 8px;">
+                        Dashboards
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="owner-dashboard.html" class="dropdown-item">
+
+                            <div>
+                                <div style="font-weight: bold;">Owner Portal</div>
+                                <div style="font-size: 11px; opacity: 0.7;">Manage your properties</div>
+                            </div>
+                        </a>
+                        <a href="tenant-dashboard.html" class="dropdown-item">
+
+                            <div>
+                                <div style="font-weight: bold;">Tenant Portal</div>
+                                <div style="font-size: 11px; opacity: 0.7;">Pay rent & maintenance</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <button id="menu-toggle" class="mobile-menu-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -107,9 +128,20 @@
             <a href="pricing.html" class="nav-link">Pricing</a>
             <a href="contact.html" class="nav-link">Contact</a>
             <hr style="border: 0; border-top: 1px solid var(--border-color);">
+            <div style="padding: 10px 0; display: flex; flex-direction: column; gap: 12px;">
+                <span
+                    style="font-size: 11px; font-weight: bold; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Dashboards</span>
+                <a href="owner-dashboard.html" class="nav-link"
+                    style="padding: 0; display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 18px;"></span> Owner Dashboard
+                </a>
+                <a href="tenant-dashboard.html" class="nav-link"
+                    style="padding: 0; display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 18px;"></span> Tenant Dashboard
+                </a>
+            </div>
+            <hr style="border: 0; border-top: 1px solid var(--border-color);">
             <a href="register.html" class="btn btn-outline">Signup</a>
-            <a href="owner-dashboard.html" class="btn btn-primary">Owner Dashboard</a>
-            <a href="tenant-dashboard.html" class="btn btn-gold">Tenant Dashboard</a>
         </div>
     </div>
 

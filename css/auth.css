@@ -1,7 +1,8 @@
 .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-base); padding: 20px; font-family: var(--font-body); }
 .auth-card { width: 100%; max-width: 480px; background: var(--bg-surface); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 48px; border: 1px solid var(--border-color); position: relative; }
 .auth-logo { margin-bottom: 32px; display: flex; justify-content: center; }
-.auth-toggles { position: absolute; top: 32px; right: 32px; display: flex; gap: 12px; }
+.auth-toggles { position: fixed; top: 24px; right: 24px; display: flex; gap: 12px; z-index: 1000; }
+[dir="rtl"] .auth-toggles { right: auto; left: 24px; }
 
 .user-type-selector { display: flex; background: var(--bg-base); padding: 6px; border-radius: 8px; margin-bottom: 32px; border: 1px solid var(--border-color); }
 .type-btn { flex: 1; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; color: var(--text-muted); cursor: pointer; border: none; background: none; transition: 0.3s; }
@@ -75,10 +76,12 @@
         flex-direction: column;
     }
     .auth-toggles {
-        position: static;
-        order: -1;
-        align-self: flex-end;
-        margin-bottom: 12px;
+        top: 8px;
+        right: 8px;
+    }
+    [dir="rtl"] .auth-toggles {
+        right: auto;
+        left: 8px;
     }
     .auth-logo {
         order: 0;
